@@ -1,0 +1,47 @@
+# Ignore everything by default
+*
+
+# Allow scripts directory and its contents
+!scripts/
+!scripts/*.js
+!scripts/*.md
+!scripts/*.json
+!scripts/package-lock.json
+
+# Allow GitHub Action files
+!.github/
+!.github/*.yml
+!.github/workflows/
+!.github/workflows/*.yml
+!action.yml
+!Dockerfile
+!entrypoint.sh
+!.gitignore
+
+# Allow documentation directory
+!cursorrules/
+!cursorrules/*.md
+!cursorrules/*.mdx
+
+# Allow README files
+!README.md
+!readme.md
+
+# Node.js
+node_modules/
+
+# Generated cursor files (should not be committed)
+ai_rules.json
+.cursor/
+.cursor/
+**/.cursor/
+
+# Temporary files
+/tmp/
+*.tmp
+*.temp
+
+# Operating System
+.DS_Store
+Thumbs.db
+

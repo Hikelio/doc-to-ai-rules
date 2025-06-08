@@ -1,0 +1,16 @@
+{
+  "name": "ai-rules-generator",
+  "version": "1.0.0",
+  "description": "Generates Cursor rules from markdown documentation",
+  "main": "generateAiRules.js",
+  "scripts": {
+    "generate": "node generateAiRules.js"
+  },
+  "dependencies": {
+    "gray-matter": "^4.0.3",
+    "js-yaml": "^4.1.0"
+  },
+  "keywords": ["cursor", "rules", "documentation", "markdown"],
+  "author": "GitHub Action",
+  "license": "MIT"
+} 
