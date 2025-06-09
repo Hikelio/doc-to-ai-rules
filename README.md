@@ -155,7 +155,7 @@ jobs:
       - uses: actions/checkout@v3
       
       - name: Generate and Distribute Cursor Rules
-        uses: your-org/ai-rules-generator@v0.1  # Replace with your action
+        uses: Hikelio/doc-to-ai-rules@v0  # Or replace with the cloned repo
         with:
           github-token: ${{ secrets.AI_RULES_DEFAULT_TOKEN }}
         env:
