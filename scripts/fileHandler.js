@@ -149,27 +149,18 @@ class FileHandler {
             path.join('.cursor', 'rules', ...sectionPath.map(ConfigParser.formatTitle));
 
         // New structure: /tmp/ai-rules/projectType/basePath/rulePath/.cursor/rules/
-        let rulePath;
+        // All paths must be relative. Absolute paths are disallowed for security and clarity.
         if (path.isAbsolute(effectiveConfig.path)) {
-            // If path is absolute, use it directly
-            rulePath = path.join(
-                projectType,
-                config.basePath || '',
-                effectiveConfig.path,
-                rulesPath,
-                `${formattedFileName}.mdc`
-            );
-        } else {
-            // If path is relative, resolve from current directory
-            rulePath = path.join(
-                process.cwd(),
-                projectType,
-                config.basePath || '',
-                effectiveConfig.path,
-                rulesPath,
-                `${formattedFileName}.mdc`
-            );
+            throw new Error(`[ERROR] ❗ Absolute paths are not allowed in the 'path' configuration. Please change "${effectiveConfig.path}" to a relative path.`);
         }
+
+        const rulePath = path.join(
+            process.cwd(),
+            projectType,
+            effectiveConfig.path,
+            rulesPath,
+            `${formattedFileName}.mdc`
+        );
 
         // Create frontmatter based on rule type
         const frontmatter = {

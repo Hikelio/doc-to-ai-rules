@@ -11,7 +11,7 @@ async function main() {
     
     // Check if config path exists
     if (!fs.existsSync(configPath)) {
-        console.error(`Error: Config file does not exist: ${configPath}`);
+        console.error(`[ERROR] ❗  Config file does not exist: ${configPath}`);
         process.exit(1);
     }
     
@@ -25,7 +25,7 @@ async function main() {
     
     // Check if docs path exists
     if (!fs.existsSync(docsPath)) {
-        console.error(`Error: Documentation path does not exist: ${docsPath}`);
+        console.error(`[ERROR] ❗  Documentation path does not exist: ${docsPath}`);
         process.exit(1);
     }
 

@@ -73,7 +73,7 @@ class BranchStrategyHandler {
                 return strategy.targetBranch || 'main';
             
             default:
-                throw new Error(`Unknown branch strategy mode: ${strategy.mode}`);
+                throw new Error(`[WARNING] ⚠️ Unknown branch strategy mode: ${strategy.mode}`);
         }
     }
 
@@ -86,32 +86,32 @@ class BranchStrategyHandler {
         const validModes = ['unique_branch_pr', 'reuse_branch_pr', 'redo_branch_pr', 'direct_commit'];
         
         if (!validModes.includes(strategy.mode)) {
-            throw new Error(`Invalid branch strategy mode: ${strategy.mode}. Valid modes: ${validModes.join(', ')}`);
+            throw new Error(`[WARNING] ⚠️ Invalid branch strategy mode: ${strategy.mode}. Valid modes: ${validModes.join(', ')}`);
         }
 
         if (strategy.mode !== 'direct_commit' && !strategy.branchName) {
-            throw new Error(`Branch name is required for mode: ${strategy.mode}`);
+            throw new Error(`[WARNING] ⚠️ Branch name is required for mode: ${strategy.mode}`);
         }
 
         if (!strategy.targetBranch) {
-            throw new Error(`Target branch is required for mode: ${strategy.mode}`);
+            throw new Error(`[WARNING] ⚠️ Target branch is required for mode: ${strategy.mode}`);
         }
 
         // Validate basePath if provided
         if (strategy.basePath !== undefined && strategy.basePath !== null) {
             if (typeof strategy.basePath !== 'string') {
-                throw new Error(`basePath must be a string, got: ${typeof strategy.basePath}`);
+                throw new Error(`[WARNING] ⚠️ basePath must be a string, got: ${typeof strategy.basePath}`);
             }
             
             // Check for invalid path characters (basic validation)
             const invalidChars = /[<>:"|?*]/;
             if (invalidChars.test(strategy.basePath)) {
-                throw new Error(`basePath contains invalid characters: ${strategy.basePath}`);
+                throw new Error(`[WARNING] ⚠️ basePath contains invalid characters: ${strategy.basePath}`);
             }
             
             // Prevent absolute paths that could be security risks
             if (path.isAbsolute(strategy.basePath)) {
-                throw new Error(`basePath must be relative, not absolute: ${strategy.basePath}`);
+                throw new Error(`[WARNING] ⚠️ basePath must be relative, not absolute: ${strategy.basePath}`);
             }
         }
     }
