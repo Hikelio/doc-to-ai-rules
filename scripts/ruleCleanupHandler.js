@@ -16,7 +16,7 @@ class RuleCleanupHandler {
     async findMdcFiles(dir) {
         // Check if directory exists first
         if (!fs.existsSync(dir)) {
-            console.log(`Debug: Directory ${dir} does not exist`);
+            console.log(`[WARNING] ⚠️ Directory ${dir} does not exist (if unexpected, check that project types match perfectly in markdown and config)`);
             return [];
         }
 
@@ -46,10 +46,10 @@ class RuleCleanupHandler {
         for (const method of methods) {
             try {
                 const files = await method.execute();
-                console.log(`Debug: Found ${files.length} .mdc files using ${method.name}`);
+                console.log(`[DEBUG]  Found ${files.length} .mdc files using ${method.name}`);
                 return files;
             } catch (error) {
-                console.log(`Debug: ${method.name} failed, trying next method:`, error.message);
+                console.log(`[DEBUG]  ${method.name} failed, trying next method:`, error.message);
             }
         }
 

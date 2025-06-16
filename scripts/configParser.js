@@ -31,7 +31,7 @@ class ConfigParser {
             try {
                 config.projectTypes = JSON.parse(projectTypesMatch[1]);
             } catch (e) {
-                console.warn('Invalid projectTypes JSON in ai-rules:', projectTypesMatch[1]);
+                console.warn('[WARNING] ⚠️ Invalid projectTypes JSON in ai-rules:', projectTypesMatch[1]);
             }
         }
 
@@ -91,7 +91,7 @@ class ConfigParser {
 
         // Output warnings with context
         if (warnings.length > 0) {
-            console.warn(`\n⚠️  Effective configuration validation warnings:`);
+            console.warn(`\n[WARNING] ⚠️ Effective configuration validation warnings:`);
             warnings.forEach(warning => {
                 console.warn(`   ${warning}`);
             });
